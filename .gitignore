@@ -1,0 +1,56 @@
+bazel*
+.source*
+.bazel_out_*
+*.safetensors
+*.log
+# MacOS specific
+.DS_Store
+**/.DS_Store
+
+# Binary files
+*.so
+*.bin
+*.apk
+*.aar
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# Generated AI pack model assets
+ai_pack/**/*.tflite
+/argmax-runtime-delivery/
+
+# Gradle and Android
+.gradle/
+local.properties
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Android Studio
+.navigation/
+
+# cli bins
+android-build-artifacts
+
+# Regression benchmark artifacts
+benchmark_data/
+upload_folder/
