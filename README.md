@@ -1,54 +1,39 @@
-# Argmax SDK Android Playground
+# Argmax SDK Kotlin Playground
 
-This project is an example Android app for integrating Argmax SDK into an Android app.
+This project hosts the source code for [Argmax Playground for Android](https://play.google.com/apps/testing/com.argmaxinc.playground).
 
-`playground-sample-app` is the runnable sample app. `playground-shared` contains most of the shared
-UI, state management, and SDK integration glue used by the sample. Most Argmax SDK integration
-points live in
-`playground-shared/src/main/java/com/argmaxinc/playground/transcription/ArgmaxSDKCoordinator.kt`.
+It is open-sourced to demonstrate best practices when building with [Argmax Pro SDK Kotlin](https://app.argmaxinc.com/docs) through an end-to-end example app. Specifically, this app demonstrates Real-time Transcription and File Transcription.
 
-## Quick Start
+---
 
-1. Export `ARGMAX_SECRET_API_TOKEN` before opening the project or running Gradle. `settings.gradle.kts`
-   reads this environment variable so Gradle can resolve the Argmax SDK artifacts.
+## Getting Started
 
-   ```bash
-   export ARGMAX_SECRET_API_TOKEN=axst_your_secret_api_token
-   ```
+### 1. Get Argmax credentials
 
-2. Replace the placeholder API key in
-   `playground-sample-app/src/main/java/com/argmaxinc/playground/sample/di/LicenseModule.kt`
-   with your own `ax_...` API key.
+This project requires a secret token and an API key from that you may generate from your [Argmax Dashboard](https://app.argmaxinc.com).
 
-3. Build and run the sample app.
+### 2. Set Argmax credentials
 
-   ```bash
-   ./gradlew :playground-sample-app:assembleDebug
-   ```
+Once obtained, please set the following environment variable with your secret token that starts with `axst_`:
 
-## SDK Modes
+```bash
+export ARGMAX_SECRET_API_TOKEN=axst_****
+```
 
-The sample defaults to the portable SDK because it is the simplest way to build and run locally.
+Furthermore, you will need to replace `REPLACE_WITH_ARGMAX_API_KEY` in `playground-sample-app/src/main/java/com/argmaxinc/playground/sample/di/LicenseModule.kt` with your real API key that starts with `ax_`
 
-- Portable mode keeps the runtime-delivery blocks in `settings.gradle.kts` commented out and uses
-  `implementation(libs.argmaxinc.sdk.portable)` in `playground-sample-app/build.gradle.kts`.
-- Lite mode requires uncommenting the runtime-delivery settings/plugin wiring and switching the app
-  dependency to `implementation(libs.argmaxinc.sdk)`.
+> **Do not commit your API key.**.
 
-If you are switching modes for the first time, follow the Argmax upgrade guide and setup playlist:
 
-- [Upgrade to Pro SDK guide](https://app.argmaxinc.com/docs/guides/upgrading-to-pro-sdk)
-- [Android setup playlist](https://www.youtube.com/playlist?list=PLL3GZ85RK9KdK_fcR3VPwd3noslHeu2y8)
+### 3. Follow Installation instructions
 
-## API Key Guidance
+Please see [Installation](https://app.argmaxinc.com/docs/guides/upgrading-to-pro-sdk) for details or see the following tutorial videos that are based on this repository:
 
-The sample app intentionally ships with the placeholder `REPLACE_WITH_ARGMAX_API_KEY`.
+- [Part 1: Integrating Argmax Pro SDK in your Android app](https://www.youtube.com/watch?v=rt7V79XXbVw&list=PLL3GZ85RK9KdK_fcR3VPwd3noslHeu2y8)
+- [Part 2: Shipping your Android app with Argmax Pro SDK and Google Play integration](https://www.youtube.com/watch?v=iWl63MaP9Rw&list=PLL3GZ85RK9KdK_fcR3VPwd3noslHeu2y8&index=2)
 
-- Long-lived client-side keys can be extracted from a compiled app package.
-- If you do not want to keep the key inline in source, load it from your own configuration or
-  backend at runtime, but treat any client-delivered key as recoverable.
-- If you still decide to embed a client-side key, obfuscate it before checking it into source and
-  treat that obfuscation as a weak deterrent, not a security boundary.
+---
 
-The shared module fails fast when the placeholder value is still present so you get a clear setup
-error instead of a vague licensing failure.
+## `argmax-sdk-kotlin-portable` and `argmax-sdk-kotlin`
+
+The default project configuration uses the `argmax-sdk-kotlin-portable` package which is recommended for a quick start and ease of local development. `argmax-sdk-kotlin` integration is more involved because it requires Google Play integration but leads to minimal app size impact (<5 MB vs >50 MB).
