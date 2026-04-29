@@ -13,8 +13,8 @@ ksp = "2.3.4"
 navigation3 = "1.0.0"
 material = "1.13.0"
 
-# sdk version shared across argmaxinc-sdk and argmaxinc-sdk-portable
-argmaxSdk = "1.2.0"
+# Shared version for default (`argmax-sdk-kotlin`) and portable SDK coordinates
+argmaxSdk = "1.2.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,7 +38,7 @@ androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-
 androidx-lifecycle-viewmodel-navigation3 = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-navigation3", version.ref = "lifecycle" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
-# Integrates either argmaxinc-sdk or argmaxinc-sdk-portable, see details here: https://app.argmaxinc.com/docs/guides/upgrading-to-pro-sdk
+# Default SDK (`argmax-sdk-kotlin`) vs portable (`argmax-sdk-kotlin-portable`): https://app.argmaxinc.com/docs/guides/upgrading-to-pro-sdk
 argmaxinc-sdk = { group = "com.argmaxinc", name = "argmax-sdk-kotlin", version.ref = "argmaxSdk" }
 argmaxinc-sdk-portable = { group = "com.argmaxinc", name = "argmax-sdk-kotlin-portable", version.ref = "argmaxSdk" }
 
@@ -51,5 +51,5 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
-# Plugin to apply when integrating with argmaxinc-sdk
+# Plugin to apply when integrating the default SDK (`argmax-sdk-kotlin`) with runtime delivery
 argmaxinc-runtime-delivery = { id = "com.argmaxinc.runtime-delivery"}

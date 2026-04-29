@@ -21,6 +21,7 @@ ai_pack/**/*.tflite
 
 # Gradle and Android
 .gradle/
+.kotlin/
 local.properties
 **/build/
 captures/

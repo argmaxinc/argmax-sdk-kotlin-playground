@@ -71,5 +71,8 @@ object UnsupportedPlatformWarningMessageFactory {
                 }.distinct()
                     .joinToString(separator = " | ")
                     .ifEmpty { "unknown" }
+
+            is SoC.GoogleTensor ->
+                "(${detectedSoC.platform}) - ${detectedSoC.generation}"
         }
 }

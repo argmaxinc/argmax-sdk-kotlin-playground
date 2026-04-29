@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     // // Start of setting up runtime-delivery for playground, comment out if using portable sdk //////
-    // alias(libs.plugins.argmaxinc.runtime.delivery)
+    alias(libs.plugins.argmaxinc.runtime.delivery)
     // // End of setting up runtime-delivery for playground, comment out if using portable sdk //////
 }
 
@@ -60,10 +60,10 @@ android {
 
 dependencies {
     implementation(project(":playground-shared"))
-    // Use this to depend on lite sdk from Maven when runtime-delivery is enabled.
-    // implementation(libs.argmaxinc.sdk)
-    // Use this to depend on portable sdk from Maven when runtime-delivery is disabled.
-    implementation(libs.argmaxinc.sdk.portable)
+    // Use this to depend on the default SDK from Maven when runtime-delivery is enabled.
+    implementation(libs.argmaxinc.sdk)
+    // Use this to depend on the portable SDK from Maven when runtime-delivery is disabled.
+    // implementation(libs.argmaxinc.sdk.portable)
 
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.compose.bom))

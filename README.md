@@ -34,6 +34,19 @@ Please see [Installation](https://app.argmaxinc.com/docs/guides/upgrading-to-pro
 
 ---
 
-## `argmax-sdk-kotlin-portable` and `argmax-sdk-kotlin`
+## `argmax-sdk-kotlin` and `argmax-sdk-kotlin-portable`
 
-The default project configuration uses the `argmax-sdk-kotlin-portable` package which is recommended for a quick start and ease of local development. `argmax-sdk-kotlin` integration is more involved because it requires Google Play integration but leads to minimal app size impact (<5 MB vs >50 MB).
+For an overview of how the **default** (`argmax-sdk-kotlin`) and **portable** (`argmax-sdk-kotlin-portable`) SDKs differ, see [this video playlist](https://www.youtube.com/watch?v=X9oxMXnOjkc&list=PLL3GZ85RK9KdK_fcR3VPwd3noslHeu2y8).
+
+The default project configuration uses the `argmax-sdk-kotlin` package to demonstrate the production-shaped Google Play runtime-delivery integration. `argmax-sdk-kotlin-portable` is simpler for quick local development because it bundles runtime libraries directly, but it has a larger app size impact (>50 MB vs <5 MB).
+
+Because the default SDK setup generates runtime-delivery modules and model assets, Gradle initialization can take a while the first time. Install the sample app through the runtime-delivery tasks:
+
+```bash
+./gradlew installRuntimeDeliveryDebugForDevice
+./gradlew installRuntimeDeliveryReleaseForDevice
+```
+
+Use the portable SDK if you want the regular Android Studio or Gradle install flow.
+
+When updating the SDK version, keep the runtime-delivery settings plugin version in `settings.gradle.kts` aligned with the SDK version in `gradle/libs.versions.toml`; the sample app dependency in `playground-sample-app/build.gradle.kts` reads that version catalog entry.
